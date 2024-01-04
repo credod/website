@@ -7,9 +7,11 @@ const Home: NextPage = () => {
     <>
     <Head>
       <title>Credo Duarte</title>
+      <meta name='description' content="Credo's personal website"></meta>
     </Head>
     <div className={styles.container}>
-      <h1>Website coming soon!</h1>
+      <h1>Credo Duarte</h1>
+      <p>Frontend Developer</p>
     </div>
     </>
   )
