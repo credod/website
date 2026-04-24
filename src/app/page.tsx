@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
+import cloudsImage from "@public/clouds.jpeg";
 
 export default function Home() {
   return (
@@ -10,12 +11,13 @@ export default function Home() {
       </div>
       <div className={styles.imageWrapper}>
         <Image
-          src="/clouds.jpg"
+          src={cloudsImage}
           width={2500}
           height={1875}
           alt="A bright blue sky with scattered fluffy white clouds, including a few larger cloud clusters near the center and smaller ones drifting across the open space."
           loading="eager"
           fetchPriority="high"
+          placeholder="blur"
           sizes="(min-width: 1280px) 65vw, (min-width: 1020px) 80vw, 95vw"
           className={styles.image}
         />
