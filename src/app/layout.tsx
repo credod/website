@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
+import GridOverlay from "@/components/GridOverlay";
 import "../styles/globals.css";
 
 const schibstedGrotesk = Schibsted_Grotesk({
@@ -9,7 +10,13 @@ const schibstedGrotesk = Schibsted_Grotesk({
 export const metadata: Metadata = {
   title: "Credo Duarte",
   description:
-    "[•_•] Beep Boop. Credo Duarte: Software Engineer. Beep Boop [•_•]",
+    "Credo Duarte is a Software Engineer with a passion for creative expression through technology",
+  authors: [{ name: "Credo Duarte" }],
+  creator: "Credo Duarte",
+  publisher: "Credo Duarte",
+  other: {
+    designer: "Credo Duarte",
+  },
 };
 
 export default function RootLayout({
@@ -23,9 +30,11 @@ export default function RootLayout({
         <small
           data-beep-boop="[•_•]"
           dangerouslySetInnerHTML={{
-            __html: "<!-- Website by Credo Duarte (credoduarte.com) -->",
+            __html:
+              "<!-- Welcome to my personal website! If you'd like to collaborate, feel free to reach out: studio@credoduarte.com -->",
           }}
         />
+        <GridOverlay />
         {children}
       </body>
     </html>

@@ -1,0 +1,84 @@
+@use "@styles/index.scss" as *;
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 spacing(16);
+  gap: spacing(8);
+
+  @include min-width(744) {
+    min-height: max(100vh, 600px);
+  }
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include min-width(744) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @include min-width(1020) {
+    width: grid-column(10);
+  }
+
+  @include min-width(1280) {
+    width: grid-column(8);
+  }
+}
+
+.title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-size: fluid-font(32px, 48px, 320px, 1020px);
+  line-height: 1.2;
+}
+
+.tagline {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-size: fluid-font(16px, 20px, 320px, 1020px);
+  line-height: 1.2;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 2.45;
+  overflow: hidden;
+
+  @include min-width(1020) {
+    width: grid-column(10);
+  }
+
+  @include min-width(1280) {
+    width: grid-column(8);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email {
+  align-self: flex-end;
+
+  @include min-width(1020) {
+    padding-right: grid-column(1, 1);
+  }
+
+  @include min-width(1280) {
+    padding-right: grid-column(2, 2);
+  }
+}
