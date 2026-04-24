@@ -1,6 +1,15 @@
 :root {
+  /* Colors */
   --color-bg: #171717;
   --color-text: #fafafa;
+
+  /* Grid */
+  --grid-gutter-width: 16px;
+  --grid-columns: 12;
+  --grid-column-width: calc(
+    (100vw - (var(--grid-gutter-width) * (var(--grid-columns) + 1))) /
+      var(--grid-columns)
+  );
 }
 
 html {

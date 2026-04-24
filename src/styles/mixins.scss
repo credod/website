@@ -1,0 +1,18 @@
+$valid-breakpoint-widths: 375, 744, 1020, 1280, 1440, 1920;
+
+/**
+ * Generates a min-width media query.
+ * @param {number} $width - The width to generate the media query for.
+ * @return {string} The min-width media query.
+ */
+@use "sass:list";
+
+@mixin min-width($width) {
+  @if not list.index($valid-breakpoint-widths, $width) {
+    @error "Invalid media query value: #{$width}. Allowed values are: #{$valid-breakpoint-widths}";
+  }
+
+  @media (min-width: #{$width}px) {
+    @content;
+  }
+}

@@ -1,0 +1,60 @@
+/**
+ * Generates a calculated CSS value that aligns to the grid system.
+ * @param {number} $columns - The number of columns to span.
+ * @param {number} $gutters - The number of gutters to span.
+ * @return {string} The calculated length.
+ */
+@use "sass:list";
+
+@function grid-column($columns, $gutters: $columns - 1) {
+  $adjusted-gutters: $gutters;
+
+  @if $gutters < 0 {
+    $adjusted-gutters: 0;
+  }
+
+  $column-size: "var(--grid-column-width) * #{$columns}";
+  $gutter-size: "var(--grid-gutter-width) * #{$adjusted-gutters}";
+  @return calc(calc(#{$column-size} + #{$gutter-size}));
+}
+
+$valid-spacing-values:
+  4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 120, 160, 240;
+/**
+ * Returns a spacing token from the spacing scale.
+ * Usage: margin: spacing(24);
+ */
+@function spacing($value) {
+  @if not list.index($valid-spacing-values, $value) {
+    @error "Invalid spacing value: #{$value}. Allowed values are: #{$valid-spacing-values}";
+  }
+
+  @return #{$value}px;
+}
+
+/** Returns a clamp() expression that scales font size
+* between a min and max based on viewport width.
+*
+* @param {number} $min-font-size        Minimum font size (px, rem, etc.)
+* @param {number} $max-font-size        Maximum font size (same unit)
+* @param {number} $min-viewport-width   Viewport width at which scaling starts
+* @param {number} $max-viewport-width   Viewport width at which scaling ends
+*/
+@function fluid-font(
+  $min-font-size,
+  $max-font-size,
+  $min-viewport-width,
+  $max-viewport-width
+) {
+  $slope: calc(
+    ($max-font-size - $min-font-size) /
+      ($max-viewport-width - $min-viewport-width)
+  );
+  $intercept: -$min-viewport-width * $slope + $min-font-size;
+
+  @return clamp(
+    #{$min-font-size},
+    #{$intercept} + #{$slope * 100}vw,
+    #{$max-font-size}
+  );
+}
