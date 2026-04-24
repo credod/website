@@ -3,6 +3,7 @@
 .main {
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +13,7 @@
 
   @include min-width(744) {
     min-height: max(100vh, 600px);
+    min-height: max(100svh, 600px);
   }
 }
 
